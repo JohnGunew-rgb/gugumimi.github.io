@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my structure</title>
+  <style>
+    * {.section,
+.hero {
+  scroll-margin-top: 100px;
+}
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: #f5f1ea;
+      color: #111111;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+    }
+    body.dark {
+  background: #0e0e0e;
+  color: #f5f5f5;
+}
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container .nav {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  gap: 16px;
+  z-index: 10;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(17,17,17,0.08);
+}
+
+.nav a {
+  font-size: 0.9rem;
+  color: #222;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav a:hover {
+  opacity: 0.6;
+  transform: translateY(-1px);
+}
+
+body.dark .nav {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.12);
+}
+
+body.dark .nav a {
+  color: #f5f5f5;
+}{
+      width: min(1100px, 88%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .hero-inner {
+      width: 100%;
+      display: grid;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #6f6a63;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #4e4a45;
+    }
+
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .pillars span {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: #222;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.pillars span:hover {
+  transform: translateY(-3px);
+  background: #111111;
+  color: #f5f1ea;
+  border-color: #111111;
+}
+
+    .section {
+      padding: 96px 0;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #7a746c;
+      margin-bottom: 28px;
+    }
+
+    .about-text {
+      max-width: 760px;
+      font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+      line-height: 1.7;
+      color: #171717;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      body.dark .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+body.dark .pillars span {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+      padding: 28px 24px;
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 20px;
+      min-height: 220px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: #4e4a45;
+      font-size: 0.98rem;
+    }
+
+    .philosophy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .philosophy-line {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .footer {
+      padding: 56px 0 72px;
+      color: #6f6a63;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 88vh;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button onclick="toggleMode()" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+">
+  mode
+</button>
+<nav class="nav">
+  <a href="#home">home</a>
+  <a href="#projects">projects</a>
+  <a href="#log">log</a>
+</nav>
+  <main>
+    <section class="hero" id="home"></section>
+      <section class="section">
+  <div class="container fade-in">
+    <div class="section-title">about</div>
+    <p class="about-text">
+      I am rebuilding myself through structure and repetition.
+      I don't depend on anyone.
+      I build my own system.
+    </p>
+  </div>
+</section>
+      <div class="container hero-inner">
+        <div class="eyebrow">personal manifesto</div>
+      <h1  transition: all 0.3s ease;class="fade-in">my way
+      </h1>
+       transition: all 0.3s ease;
+<p class="subtitle fade-in">structure over emotion</p>
+<div class="pillars fade-in">
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">about</div>
+        <p class="about-text">
+          I am building my own structure through daily repetition.
+          Eating clean. Training hard. Studying deeply. Competing with focus.
+          I do not chase noise. I build rhythm, strength, knowledge and precision.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">four pillars</div>
+        <div class="grid">
+          <div class="card">
+            <h3>eat</h3>
+            <p>
+              clean fuel, simple taste, stable energy.
+              a quiet foundation for everything else.
+            </p>
+          </div>
+          <div class="card">
+            <h3>train</h3>
+            <p>
+              discipline, strength, recovery.
+              building control over body and rhythm.
+            </p>
+          </div>
+          <div class="card">
+            <h3>study</h3>
+            <p>
+              curiosity, structure, long-term growth.
+              learning as a way to rebuild the self.
+            </p>
+          </div>
+          <div class="card">
+            <h3>fps</h3>
+            <p>
+              focus, prediction, competition.
+              precision under pressure and calm inside noise.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">philosophy</div>
+        <div class="philosophy">
+          <div class="philosophy-line">Ascetic in habit.</div>
+          <div class="philosophy-line">Curious in thought.</div>
+          <div class="philosophy-line">Competitive in action.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        built with intention.
+      </div>
+    </footer>
+  </main>
+  <section class="section" id="projects">
+  <div class="container fade-in">
+    <div class="section-title">projects</div>
+    <div class="grid">
+      <div class="card">
+        <h3>personal website</h3>
+        <p>
+          my first self-built page. a manifesto of structure, discipline and competitive spirit.
+        </p>
+      </div>
+      <div class="card">
+        <h3>fps training log</h3>
+        <p>
+          a growing system for aim, prediction, focus and ranked improvement.
+        </p>
+      </div>
+      <div class="card">
+        <h3>study system</h3>
+        <p>
+          notes on coding, language, research and long-term self-reconstruction.
+        </p>
+      </div>
+      <div class="card">
+        <h3>future works</h3>
+        <p>
+          games, tools, ideas and small digital worlds that will be built step by step.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="log">
+  <div class="container fade-in">
+    <div class="section-title">log</div>
+    <p class="about-text">
+      I am not waiting to be chosen.  
+      I am building rhythm, body, skill and direction.  
+      One page. One day. One system at a time.
+    </p>
+  </div>
+</section>
+  <script>
+  function toggleMode() {
+    document.body.classList.toggle('dark');
+  }
+</script>
+</body>
+</html>
+<script>
+  const elements = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  elements.forEach(el => observer.observe(el));
+</script>
