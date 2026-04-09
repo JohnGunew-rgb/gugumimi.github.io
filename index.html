@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my structure</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: #f5f1ea;
+      color: #111111;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background: #0e0e0e;
+      color: #f5f5f5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 88%);
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      display: flex;
+      gap: 16px;
+      z-index: 20;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .nav a {
+      font-size: 0.9rem;
+      color: #222;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav a:hover {
+      opacity: 0.6;
+      transform: translateY(-1px);
+    }
+
+    body.dark .nav {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    body.dark .nav a {
+      color: #f5f5f5;
+    }
+
+    .mode-btn {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(17, 17, 17, 0.1);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 20;
+    }
+
+    .mode-btn:hover {
+      transform: scale(1.08);
+    }
+
+    body.dark .mode-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .hero,
+    .section {
+      scroll-margin-top: 100px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    body.dark .hero,
+    body.dark .section {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-inner {
+      width: 100%;
+      display: grid;
+      gap: 18px;
+      max-width: 820px;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #6f6a63;
+    }
+
+    body.dark .eyebrow,
+    body.dark .section-title {
+      color: #b5b0aa;
+    }
+
+    .serif {
+      font-family: "Times New Roman", serif;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 600;
+      line-height: 0.95;
+      transition: all 0.3s ease;
+    }
+
+    h1:hover {
+      letter-spacing: -0.01em;
+      transform: translateY(-2px);
+    }
+
+    .subtitle {
+      max-width: 720px;
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      color: #5c564f;
+      letter-spacing: 0.04em;
+    }
+
+    body.dark .subtitle,
+    body.dark .about-text,
+    body.dark .card p,
+    body.dark .footer,
+    body.dark .becoming-text,
+    body.dark .perspective-text,
+    body.dark .fps-text {
+      color: #d2cdc6;
+    }
+
+    .keywords {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      color: #666;
+    }
+
+    body.dark .keywords {
+      color: #aaa;
+    }
+
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .pillars span {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: #222;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(6px);
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .pillars span:hover {
+      transform: translateY(-3px);
+      background: #111111;
+      color: #f5f1ea;
+      border-color: #111111;
+    }
+
+    body.dark .pillars span {
+      background: rgba(255, 255, 255, 0.05);
+      color: #f5f5f5;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark .pillars span:hover {
+      background: #f5f5f5;
+      color: #111111;
+      border-color: #f5f5f5;
+    }
+
+    .section {
+      padding: 96px 0;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #7a746c;
+      margin-bottom: 28px;
+    }
+
+    .about-text {
+      max-width: 760px;
+      font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+      line-height: 1.7;
+      color: #171717;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 28px 24px;
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 20px;
+      min-height: 220px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(17, 17, 17, 0.18);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: #4e4a45;
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-link {
+      display: block;
+      height: 100%;
+      transition: opacity 0.25s ease;
+    }
+
+    .card-link:hover {
+      opacity: 0.92;
+    }
+
+    .becoming-block,
+    .perspective-block,
+    .fps-block {
+      max-width: 760px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .becoming-text,
+    .perspective-text,
+    .fps-text {
+      font-size: 1.05rem;
+      color: #4e4a45;
+    }
+
+    .fps-quote {
+      font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+      line-height: 1.35;
+      color: #171717;
+      max-width: 760px;
+    }
+
+    body.dark .fps-quote {
+      color: #f5f5f5;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+      will-change: opacity, transform;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 88vh;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button onclick="toggleMode()" class="mode-btn">mode</button>
+
+  <nav class="nav">
+    <a href="#home">home</a>
+    <a href="#projects">projects</a>
+    <a href="#fps-philosophy">fps</a>
+    <a href="#perspective">perspective</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="eyebrow">personal manifesto</div>
+        <h1 class="serif">born from collapse</h1>
+        <p class="subtitle">枯木逢春 古树新生</p>
+        <p class="keywords serif">ascetic · inquiry · edge</p>
+
+        <div class="pillars">
+          <span>diet</span>
+          <span>study</span>
+          <span>train</span>
+          <span>fps</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container fade-in">
+        <div class="section-title">projects</div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>personal website</h3>
+            <p>
+              my first self-built page. a manifesto of structure, discipline and competitive spirit.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>study system</h3>
+            <p>
+              a system for learning, thinking and long-term self-reconstruction.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>training log</h3>
+            <p>
+              daily records of rebuilding. small steps, consistent progress.
+            </p>
+          </div>
+
+          <div class="card">
+            <a href="#fps-philosophy" class="card-link">
+              <h3>fps philosophy</h3>
+              <p>perception, prediction and execution. beyond aim.</p>
+              <p>i don't play for aim, i play for win.</p>
+              <p>you see the screen, i see the whole.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fps-philosophy">
+      <div class="container fade-in">
+        <div class="section-title">fps philosophy</div>
+
+        <div class="fps-block">
+          <p class="fps-quote serif">
+            no love.<br>
+            only fps.
+          </p>
+
+          <p class="fps-text">
+            lovers betray,
+            time dose not.
+          </p>
+
+          <p class="fps-text">
+            爱会背叛 但时长不会
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="perspective">
+      <div class="container fade-in">
+        <div class="section-title">perspective</div>
+
+        <div class="perspective-block">
+          <p class="perspective-text">
+            on life, love, self and the world.
+          </p>
+          <p class="perspective-text">
+            a place for thoughts that will later become pages, scripts and voice.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    const elements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    elements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
